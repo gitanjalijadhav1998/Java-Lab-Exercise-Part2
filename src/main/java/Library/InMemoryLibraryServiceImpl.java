@@ -14,7 +14,7 @@ public class InMemoryLibraryServiceImpl implements LibraryService {
 
     ClassLoader classLoader = getClass().getClassLoader();
     URL resource = classLoader.getResource("Books.csv");
-
+    //Read file contents.
     public InMemoryLibraryServiceImpl() throws FileNotFoundException {
         if (resource == null) {
             throw new FileNotFoundException("file is not found!");
@@ -29,6 +29,7 @@ public class InMemoryLibraryServiceImpl implements LibraryService {
         }
     }
 
+    //get the required data from file.
     private Book getRecordFromLine(String line) {
         String[] columns = line.split(";");
         String title = columns[8];
@@ -42,6 +43,7 @@ public class InMemoryLibraryServiceImpl implements LibraryService {
         return book;
     }
 
+    //get the books details with specific fiels.
     @Override
     public List<Book> getBooksByAuthor(String author, SortField sortField, SortOrder sortOrder) {
         Comparator<Book> comparator = new SortByTitle();

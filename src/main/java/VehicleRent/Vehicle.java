@@ -15,6 +15,7 @@ public class Vehicle {
         this.licensePlate = licensePlate;
     }
 
+    //Getter methods.
     public long getIdentificationCode() {
         return identificationCode;
     }

@@ -17,6 +17,7 @@ public class Rental {
         this.vehicle = vehicle;
     }
 
+    //Getter methods.
     public String getCustomer_Name() {
         return customer_Name;
     }
@@ -41,6 +42,8 @@ public class Rental {
         return vehicle;
     }
 
+
+    //Setter methods.
     public void setCustomer_Name(String customer_Name) {
         this.customer_Name = customer_Name;
     }

@@ -13,35 +13,42 @@ import java.util.Scanner;
 public class Customer {
 
     public static void main(String[] args) {
-        
+
+        //create FileWriter object for writing data in csv file.
         FileWriter vehicleWriter;
         FileWriter customerDetailWriter;
 
-
+        //ArrayList is created of vehicle.
         ArrayList<Vehicle> vehicles = new ArrayList<>();
+
+        //ArrayList is created of Rental.
         ArrayList<Rental> rentals = new ArrayList<>();
 
+        //create object of Vehicle.
         Vehicle vehicle = null;
-        Rental rental1;
         Vehicle v;
+        //create object of Rental.
+        Rental rental1;
 
 
 
+        //create object of scanner class.
         Scanner scanner = new Scanner(System.in);
         int selection;
         int num = 0;
         String customerName = "";
 
        
-        //int number = 0;
+
         String op = null;
 
         try {
+            //get file location.
             vehicleWriter = new FileWriter("C:\\Users\\211619\\IdeaProjects\\Java-Lab_Exercise5\\src\\main\\resources\\Vehicle.csv");
             customerDetailWriter = new FileWriter("C:\\Users\\211619\\IdeaProjects\\Java-Lab_Exercise5\\src\\main\\resources\\Rental.csv");
 
             do
-            //while (number < 10)
+
             {
                 System.out.println("Enter your choice : ");
                 System.out.println("1. Enter Vehicle Record\n" +
@@ -57,17 +64,17 @@ public class Customer {
                 );
                 int choice = scanner.nextInt();
                 switch (choice) {
+                    //add Vehicle data for car rental system
                     case 1:
                         System.out.println("******************** Enter Vehicle Details ********************");
                         System.out.println("Enter identification code : ");
                         int code = scanner.nextInt();
-                        //sc.nextLine();
 
-                        //sc = new Scanner(System.in);
+
                         System.out.println("Enter brand : ");
                         String brand = scanner.next();
 
-                        //sc = new Scanner(System.in);
+
                         System.out.println("Enter Model : ");
                         String model = scanner.next();
 
@@ -76,7 +83,7 @@ public class Customer {
                         int seats = scanner.nextInt();
                         scanner.nextLine();
 
-                        //sc = new Scanner(System.in);
+
                         System.out.println("Enter license plate : ");
                         String lplate = scanner.next();
 
@@ -84,7 +91,7 @@ public class Customer {
                         vehicles.add(vehicle);
 
                         break;
-
+                    //add customer details for car rental
                     case 2:
                         System.out.println("******************** Enter Customer Details ********************");
                         System.out.println("\n*********************************************");
@@ -135,6 +142,7 @@ public class Customer {
                         }
                         break;
 
+                    //check available cars for rent.
                     case 3:
                         System.out.println("\n*********************************************");
                         System.out.println("******************** Total Cars Available for Rent ********************");
@@ -149,10 +157,11 @@ public class Customer {
                         }else {
                             System.out.println("Currently no any car is Avilable for Rent");
                         }
-                        //System.out.println("\n*********************************************");
+
 
                         break;
 
+                    //show total cars on rent.
                     case 4:
                         System.out.println("\n*********************************************");
                         System.out.println("******************** Available car on Rent ********************");
@@ -173,9 +182,10 @@ public class Customer {
                             System.out.println("No Record found");
                         }
 
-                        //System.out.println("\n*********************************************");
+
                         break;
 
+                    //available cars on rent in given period.
                     case 5:
                         System.out.println("******************** Available car on Rent in given period ********************");
                         if(vehicles.size() >= 1) {
@@ -220,6 +230,7 @@ public class Customer {
                         }
                         break;
 
+                    //add new car for rent.
                     case 6:
                         System.out.println("******************** Add new Vehicle ********************");
                         System.out.println("Enter identification code : ");
@@ -249,6 +260,7 @@ public class Customer {
 
                         break;
 
+                    //cancle the car
                     case 7:
                         System.out.println("******************** Cancle the Vehicle ********************");
                         if(rentals.size() >= 1) {
@@ -282,6 +294,7 @@ public class Customer {
                         }
                         break;
 
+                    //Import data to Vehicle.csv file.
                     case 8:
                         System.out.println("******************** Import data to CSV file ********************");
                         if(vehicles.size() >= 1) {
@@ -328,11 +341,11 @@ public class Customer {
                         customerDetailWriter.close();
                         break;
 
+                    //Export data from Rental.csv file.
                     case 9:
                         System.out.println("******************** Export data from CSV file ********************");
                         String line = "";
-                        /*vehicleWriter.close();
-                        customerDetailWriter.close();*/
+
                         try
                         {
                             BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\211619\\IdeaProjects\\Java-Lab_Exercise5\\src\\main\\resources\\Vehicle.csv"));
@@ -392,13 +405,13 @@ public class Customer {
                         System.out.println("Please enter correct choice.");
                         break;
 
-                }
+                }//switch end.
                 scanner = new Scanner(System.in);
                 System.out.println("Do you want to continue enter y/n :");
                 op = scanner.nextLine();
 
             }while(op.equalsIgnoreCase("y"));
-
+            //do-while loop ends.
 
         } catch (IOException e) {
             e.printStackTrace();
